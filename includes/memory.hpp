@@ -6,18 +6,24 @@
 
 #pragma once
 
+#include <vector>
+#include <string>
 #include "../helpers/definition.hpp"
+#include "../helpers/Tools.hpp"
 
 class Memory
 {
     private:
-        
+        std::vector<std::string> stack;
 
     public:
         Memory();
         ~Memory();
 
     public:
-        _data Read(_address );
-        void Write(_address, _data );
+        data Read(address );
+        void Write(address, data );
+
+    private:
+        void LoadStack();
 };
