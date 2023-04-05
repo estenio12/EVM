@@ -27,3 +27,12 @@ void Memory::LoadStack()
         this->stack.push_back(model::template_8bits);
     }
 }
+
+void Memory::LoadProgram(std::vector<std::string> opcodes)
+{
+    for(int i = 0; i < opcodes.size(); i++)
+    {
+        this->stack[i] = opcodes[i];
+    }
+}
+

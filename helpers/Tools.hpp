@@ -36,3 +36,44 @@ namespace DecimalConverter
     }
 }
 
+namespace Tools
+{
+    static std::vector<std::string> Split(std::string source, char condition)
+    {
+        std::vector<std::string> list;
+        std::string chunk;
+
+        for(char letter : source)
+        {
+            if(letter == condition)
+            {
+                list.push_back(chunk);
+                chunk.clear();
+            }
+            else
+            {
+                chunk.push_back(letter);
+            }
+        }
+
+        if(chunk.size() > 0)
+        {
+            list.push_back(chunk);
+            chunk.clear();
+        }
+
+        return list;
+    }
+    
+    static std::string Substring(std::string source, int start, int end)
+    {
+        std::string nstring;
+
+        for(int i = start; i <= end; i++)
+        {
+            nstring.push_back(source[i]);
+        }
+
+        return nstring;
+    }
+}

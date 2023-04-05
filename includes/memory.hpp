@@ -23,6 +23,7 @@ class Memory
     public:
         data Read(address );
         void Write(address, data );
+        void LoadProgram(std::vector<std::string> );
 
     private:
         void LoadStack();

@@ -24,4 +24,5 @@ namespace SETTING
     static const int MIN_REGISTER = 0;
     static const int MAX_ADDRESS  = MAX_MEMORY - 1;
     static const int MIN_ADDRESS  = 0;
+    static const int MAX_STACKPOINTER = 256;
 }
