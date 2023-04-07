@@ -24,6 +24,8 @@ class Memory
         data Read(address );
         void Write(address, data );
         void LoadProgram(std::vector<std::string> );
+        std::vector<data> ReadChunk(int, int); 
+        void WriteChunk(int, std::vector<data>); 
 
     private:
         void LoadStack();

@@ -36,3 +36,25 @@ void Memory::LoadProgram(std::vector<std::string> opcodes)
     }
 }
 
+std::vector<data> Memory::ReadChunk(int start, int end)
+{
+    std::vector<data> chuck;
+
+    for(int i = start; i <= end; i++)
+    {
+        chuck.push_back(this->stack[i]);
+    }
+
+    return chuck;
+}
+
+void Memory::WriteChunk(int address, std::vector<data> chunk)
+{
+    int pointer = address;
+
+    for(auto byte : chunk)
+    {
+        this->stack[pointer] = byte;
+        pointer++;
+    }
+}

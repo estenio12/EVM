@@ -11,7 +11,7 @@
 #include <fstream>
 
 #include "../includes/memory.hpp"
-#include "../includes/Output.hpp"
+#include "../includes/output.hpp"
 
 class Loader
 {

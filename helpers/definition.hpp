@@ -8,9 +8,9 @@
 
 #include <string>
 
-using address  = std::string;
+using address   = std::string;
 using _register = std::string;
-using data     = std::string;
+using data      = std::string;
 
 namespace model
 {
@@ -25,4 +25,6 @@ namespace SETTING
     static const int MAX_ADDRESS  = MAX_MEMORY - 1;
     static const int MIN_ADDRESS  = 0;
     static const int MAX_STACKPOINTER = 256;
+    static const int MAX_RANGE_MATH   = 127;
+    static const int MIN_RANGE_MATH   = -127;
 }
