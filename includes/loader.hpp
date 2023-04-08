@@ -20,9 +20,8 @@ class Loader
         std::string BinaryContent = "";
 
     private:
-        // # first 24 byte is signature
-        // # the last 2 bytes is module, exemple: 00 = 8 bits architecture
-        const std::string defaultProtocolo = "01100101011101100110110100";
+        // # Binary signature
+        const std::string signature = "011001010111011001101101";
 
     public:
         Loader(Memory* memory, std::string );

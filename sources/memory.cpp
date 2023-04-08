@@ -32,7 +32,10 @@ void Memory::LoadProgram(std::vector<std::string> opcodes)
 {
     for(int i = 0; i < opcodes.size(); i++)
     {
-        this->stack[i] = opcodes[i];
+        if(opcodes[i].size() > 1)
+        {
+            this->stack[i] = opcodes[i];
+        }
     }
 }
 

@@ -9,7 +9,9 @@
 #include <string>
 #include <vector>
 #include <cmath>
+#include <iostream>
 #include "../helpers/definition.hpp"
+#include "../includes/output.hpp"
 
 namespace BinaryMapper
 {
@@ -31,7 +33,7 @@ namespace DecimalConverter
         for(int i = 0; i < value.length(); i++)
         {
             int power = i - (value.length() - 1);
-            FinalValue += pow(2, power) * BinaryMapper::Bit(i);
+            FinalValue += pow(2, abs(power)) * BinaryMapper::Bit(value[i]);
         }
 
         return FinalValue;
@@ -45,6 +47,12 @@ namespace BinaryConverter
         std::string buildBin;
         std::string bin;
         int nval = value;
+
+        if(value == 1 || value == 0)
+        {
+            if(value == 1) return "1";
+            return "0";
+        }
     
         while(nval > 0)
         {
@@ -112,7 +120,6 @@ namespace Tools
         for(int i = 0; i <= (SIZE_8 - value.size()); i++)
         {
             buildBin.push_back('0');
-            std::cout << i << ',' << std::endl;
         }
 
         return buildBin += value;

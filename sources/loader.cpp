@@ -10,6 +10,8 @@ Loader::Loader(Memory* memory, std::string path):memory(memory)
     }
 }
 
+Loader::~Loader(){}
+
 void Loader::LoadBinaryContent(std::string filePath)
 {
     auto path = std::filesystem::path(filePath);
@@ -39,17 +41,17 @@ void Loader::LoadBinaryContent(std::string filePath)
 
 bool Loader::IsValidHeader()
 {
-    auto header = Tools::Substring(this->BinaryContent, 0, 25);
+    auto header = Tools::Substring(this->BinaryContent, 0, 23);
     
-    if(header == this->defaultProtocolo) return true;
+    if(header == this->signature) return true;
 
     return false;
 }
 
 void Loader::Bootstrap()
 {
-    auto binary  = Tools::Substring(this->BinaryContent, 26, this->BinaryContent.length());
+    auto binary  = Tools::Substring(this->BinaryContent, 24, this->BinaryContent.length());
     auto opcodes = Tools::Split(binary, '|');
-
+    
     this->memory->LoadProgram(opcodes);
 }

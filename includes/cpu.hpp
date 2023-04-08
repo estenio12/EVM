@@ -13,6 +13,7 @@
 #include "../helpers/definition.hpp"
 #include "../includes/memory.hpp"
 #include "../includes/output.hpp"
+#include "../model/EOpcodes.hpp"
 
 class Cpu
 {
@@ -31,10 +32,19 @@ class Cpu
     private:
         int programCounter = 0;
         int stackPointer = SETTING::MAX_STACKPOINTER / 2;
+        bool run = true;
 
     public:
         Cpu(Memory* memory);
         ~Cpu();
+
+    public:
+        void Run();
+    
+    private:
+        data SeekInstruction();
+        void Decode(data);
+        void IncrementProgramCounter();
 
     private:
         void LoadRegister();
@@ -48,7 +58,7 @@ class Cpu
         void DecrementStackPointer();
         void SetProgramCounter(int);
 
-    public:
+    private:
         void NOP();
         void LDX(address, _register);
         void STX(_register, address);
@@ -81,4 +91,38 @@ class Cpu
         void ROR(_register, _register);
         void PRT(address, address);
         void INP(address);
+
+    private:
+        void CallNOP();
+        void CallLDX(data);
+        void CallSTX(data);
+        void CallMOV(data);
+        void CallADD(data);
+        void CallSUB(data);
+        void CallMUL(data);
+        void CallDIV(data);
+        void CallJMP(data);
+        void CallJSR(data);
+        void CallRTS(data);
+        void CallCMP(data);
+        void CallBEQ(data);
+        void CallBNE(data);
+        void CallBGT(data);
+        void CallBLT(data);
+        void CallBGE(data);
+        void CallBLE(data);
+        void CallCLR(data);
+        void CallOFF(data);
+        void CallAND(data);
+        void CallOR(data);
+        void CallXOR(data);
+        void CallNOT(data);
+        void CallNAND(data);
+        void CallNOR(data);
+        void CallXNOR(data);
+        void CallSET(data);
+        void CallROL(data);
+        void CallROR(data);
+        void CallPRT(data);
+        void CallINP(data);
 };

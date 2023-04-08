@@ -266,7 +266,7 @@ void Cpu::CLR(_register target)
 
 void Cpu::OFF()
 {
-    exit(EXIT_SUCCESS);
+    this->run = false;
 }
 
 void Cpu::AND(_register target_1, _register target_2)
