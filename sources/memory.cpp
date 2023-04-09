@@ -17,6 +17,8 @@ void Memory::Write(address address, data data)
 
 data Memory::Read(address address)
 {
+    // std::cout << "Debug Read: " << address << "\n";
+    // std::cout << "Debug Read: " << DecimalConverter::FromBinary(address) << "\n";
     return this->stack[DecimalConverter::FromBinary(address)];
 }
 
@@ -34,7 +36,8 @@ void Memory::LoadProgram(std::vector<std::string> opcodes)
     {
         if(opcodes[i].size() > 1)
         {
-            this->stack[i] = opcodes[i];
+            // std::cout << "Debug: " << opcodes[i] << " | " << i << "\n";
+            this->stackProgram.push_back(opcodes[i]);
         }
     }
 }
@@ -60,4 +63,9 @@ void Memory::WriteChunk(int address, std::vector<data> chunk)
         this->stack[pointer] = byte;
         pointer++;
     }
+}
+
+data Memory::ReadCommand(int address)
+{
+    return this->stackProgram[address];
 }

@@ -2,8 +2,16 @@
 
 void Cpu::Run()
 { 
+    // auto t = memory->ReadChunk(0, 3);
+
+    // for(auto s : t)
+    // {
+    //     Output::Print(s);
+    // }
+
     while(this->run)
     {
+        // Output::Print(this->memory->Read("00000000"));
         this->Decode(this->SeekInstruction());
         this->IncrementProgramCounter();
     }
@@ -12,20 +20,20 @@ void Cpu::Run()
 void Cpu::IncrementProgramCounter()
 {
     this->programCounter++;
-    if(this->programCounter > SETTING::MAX_ADDRESS) this->programCounter = 0;
+    if(this->programCounter > SETTING::MAX_ADDRESS) exit(EXIT_SUCCESS);
 }
 
 data Cpu::SeekInstruction()
 {
-    return this->memory->Read
-    (
-        Tools::ComplementBinaryTo_8_Bits(BinaryConverter::FromDecimal(this->programCounter))
-    );
+    return this->memory->ReadCommand(this->programCounter);
 }
 
 void Cpu::Decode(data instruction)
 {
     auto opcode = DecimalConverter::FromBinary(Tools::Substring(instruction, 0, 7));
+
+    // Output::Print(Tools::Substring(instruction, 0, 7));
+    // Output::Print(instruction);
 
     switch (opcode)
     {
@@ -106,6 +114,7 @@ void Cpu::Decode(data instruction)
         break;
 
         case Opcodes::OFF:
+            Output::Print("Entrei");
             this->CallOFF(instruction);
         break;
 
