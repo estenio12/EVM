@@ -5,12 +5,15 @@ void Cpu::NOP(){}
 void Cpu::LDX(address origin, _register target)
 {
     auto data = this->memory->Read(origin);
+    int t = DecimalConverter::FromBinary(target);
+    Output::Print("\nDebug LDX: Address: " + origin + " | data: " + target + " | conv: " + std::to_string(t));
+    Output::Print("Debug LDX Data: " + data);
     this->WriteInRegister(target, data);
 }
 
-void Cpu::STX(_register target, address destiny)
+void Cpu::STX(_register origin, address destiny)
 {
-    auto data = this->ReadFromRegister(target);
+    auto data = this->ReadFromRegister(origin);
     this->memory->Write(destiny, data);
 }
 
@@ -20,7 +23,10 @@ void Cpu::MOV(_register origin, _register destiny)
     this->IsValidRegisterName(destiny);
 
     auto data = this->ReadFromRegister(origin);
+    Output::Print("\nDebug MOV: register: " + origin + " | register: " + destiny);
+    Output::Print("Debug MOV Data: "+data);
     this->WriteInRegister(destiny, data);
+
 }
 
 void Cpu::ADD(_register operand_1, _register operand_2)

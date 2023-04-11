@@ -14,7 +14,7 @@
 #include "../includes/output.hpp"
 
 namespace BinaryMapper
-{
+{   
     static const int Bit(char bit)
     {
         if(bit == '1') return 1;
@@ -115,9 +115,9 @@ namespace Tools
         std::string buildBin;
         const int SIZE_8 = 8;
 
-        if(value.size() >= SIZE_8) return value;
+        if(value.size() > SIZE_8) return value.substr(0, 7);
         
-        for(int i = 0; i <= (SIZE_8 - value.size()); i++)
+        for(int i = 0; i < (SIZE_8 - value.size()); i++)
         {
             buildBin.push_back('0');
         }

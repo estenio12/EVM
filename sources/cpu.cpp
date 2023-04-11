@@ -32,6 +32,7 @@ void Cpu::WriteInRegister(_register name, data data)
     this->IsValidRegisterName(name);
     int target = DecimalConverter::FromBinary(name);
     this->register_stack[target] = data;
+    Output::Print("Debug WriteInRegister: Register: " + name + " | data: " + data + " | conv: " + std::to_string(target));
 }
 
 data Cpu::ReadFromRegister(_register name)
@@ -101,7 +102,4 @@ void Cpu::SetProgramCounter(int addr)
     // # the address inputed by user will be ignored.
     this->programCounter = addr - 1;
 }
-
-
-
 
