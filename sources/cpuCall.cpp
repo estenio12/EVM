@@ -228,7 +228,7 @@ void Cpu::CallROR(data data)
 void Cpu::CallPRT(data data)
 {
     auto address_1 = Tools::Substring(data, 8, 23);
-    auto address_2 = Tools::Substring(data, 24, 48);
+    auto address_2 = Tools::Substring(data, 24, 40);
 
     this->PRT(address_1, address_2);
 }

@@ -17,8 +17,6 @@ void Memory::Write(address address, data data)
 
 data Memory::Read(address address)
 {
-    // std::cout << "Debug Read: " << address << "\n";
-    // std::cout << "Debug Read: " << DecimalConverter::FromBinary(address) << "\n";
     return this->stack[DecimalConverter::FromBinary(address)];
 }
 
@@ -36,7 +34,6 @@ void Memory::LoadProgram(std::vector<std::string> opcodes)
     {
         if(opcodes[i].size() > 1)
         {
-            // std::cout << "Debug: " << opcodes[i] << " | " << i << "\n";
             this->stackProgram.push_back(opcodes[i]);
         }
     }

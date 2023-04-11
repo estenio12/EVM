@@ -39,6 +39,26 @@ namespace Output
         #endif
     }
 
+    static void PrintFatalError(std::string Message )
+    {
+        #if __linux
+            std::cerr << ERRO_FLAG_MESSAGE << "Fatal Error: ";
+            std::cout << STANDARD_FLAG_MESSAGE << Message << std::endl; 
+        #else
+
+            HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+            
+            // # Write Message flag in red color
+            SetConsoleTextAttribute(hConsole, 4);
+            std::cerr << "Fatal Error: ";
+
+            // # Write Message in white color
+            SetConsoleTextAttribute(hConsole, 7);
+            std::cout << Message << std::endl;
+
+        #endif
+    }
+
     static void PrintSuccess(std::string Message)
     {
         #if __linux

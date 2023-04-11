@@ -498,7 +498,10 @@ void Cpu::PRT(address start, address end)
     this->IsValidAddress(start);
     this->IsValidAddress(end);
 
-    if(start == end)
+    auto istart = DecimalConverter::FromBinary(start);
+    auto iend   = DecimalConverter::FromBinary(end);
+
+    if(istart == iend)
     {
         auto byte  = this->memory->Read(start);
         char tchar = DecimalConverter::FromBinary(byte);
@@ -506,8 +509,6 @@ void Cpu::PRT(address start, address end)
     }
     else
     {
-        auto istart = DecimalConverter::FromBinary(start);
-        auto iend   = DecimalConverter::FromBinary(end);
         auto chunk  = this->memory->ReadChunk(istart, iend);
 
         for(auto byte : chunk)

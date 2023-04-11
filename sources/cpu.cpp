@@ -55,7 +55,7 @@ void Cpu::IsValidRegisterName(_register name)
 
     if(target > SETTING::MAX_REGISTER || target < SETTING::MIN_REGISTER)
     {
-        Output::PrintError("Range of registers violated!");
+        Output::PrintFatalError("Range of registers violated!");
         exit(EXIT_FAILURE);
     }
 }
@@ -67,7 +67,7 @@ void Cpu::IsValidAddress(address addr)
     if(target > SETTING::MAX_ADDRESS ||
        target < SETTING::MIN_ADDRESS)
     {
-        Output::PrintError("Range of address violated!");
+        Output::PrintFatalError("Range of address violated!");
         exit(EXIT_FAILURE);
     }
 }
@@ -91,7 +91,7 @@ void Cpu::SetProgramCounter(int addr)
     if(addr > SETTING::MAX_ADDRESS ||
        addr < SETTING::MIN_ADDRESS)
     {
-        Output::PrintError("Range of address violated!");
+        Output::PrintFatalError("Range of address violated!");
         exit(EXIT_FAILURE);
     }
 
