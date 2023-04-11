@@ -43,6 +43,13 @@ std::vector<data> Memory::ReadChunk(int start, int end)
 {
     std::vector<data> chuck;
 
+    if(start > end)
+    {
+        int aux = end;
+        end = start;
+        start = aux;
+    }
+
     for(int i = start; i <= end; i++)
     {
         chuck.push_back(this->stack[i]);

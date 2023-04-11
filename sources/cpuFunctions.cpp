@@ -8,10 +8,10 @@ void Cpu::LDX(address origin, _register target)
     this->WriteInRegister(target, data);
 }
 
-void Cpu::STX(_register target, address origin)
+void Cpu::STX(_register target, address destiny)
 {
     auto data = this->ReadFromRegister(target);
-    this->memory->Write(origin, data);
+    this->memory->Write(destiny, data);
 }
 
 void Cpu::MOV(_register origin, _register destiny)
@@ -504,8 +504,7 @@ void Cpu::PRT(address start, address end)
     if(istart == iend)
     {
         auto byte  = this->memory->Read(start);
-        char tchar = DecimalConverter::FromBinary(byte);
-        std::cout << tchar;
+        std::cout << static_cast<char>(DecimalConverter::FromBinary(byte));
     }
     else
     {
@@ -513,8 +512,7 @@ void Cpu::PRT(address start, address end)
 
         for(auto byte : chunk)
         {
-            char tchar = DecimalConverter::FromBinary(byte);
-            std::cout << tchar;
+            std::cout << static_cast<char>(DecimalConverter::FromBinary(byte));
         }
     }
 }
